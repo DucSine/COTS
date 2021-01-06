@@ -21,35 +21,29 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/edt_dialog_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/hint_edt_dialog_username"
+        android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/edt_dialog_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/hint_edt_dialog_username"
-            android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/edt_dialog_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/hint_edt_dialog_password"
+        android:inputType="textPassword"
+        android:textAlignment="center" />
 
-        <EditText
-            android:id="@+id/edt_dialog_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/hint_edt_dialog_password"
-            android:inputType="textPassword"
-            android:textAlignment="center" />
-
-        <Button
-            android:id="@+id/btn_dialog_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_dialog_login" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_dialog_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_dialog_login" />
 
 </LinearLayout>
