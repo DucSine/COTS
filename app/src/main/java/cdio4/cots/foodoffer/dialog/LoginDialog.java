@@ -28,9 +28,6 @@ public class LoginDialog extends AlertDialog {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edt_username.setText(new ApiRequest(context).GetRequest("https://chat-app-server-1.herokuapp.com/api/rooms/search?q=phong", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjQ4Mzk1Yzc4NTk3MDAxN2EwYzdjZiIsImlhdCI6MTYwOTQzNTc1NH0.AWMSMarnNwmH2_W3iDB0lnxsHIv-pXyjIP6nge2fPx8").toString());
-
-
             }
         });
 
