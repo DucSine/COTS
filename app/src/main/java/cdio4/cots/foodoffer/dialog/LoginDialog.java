@@ -2,6 +2,7 @@ package cdio4.cots.foodoffer.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 
 import cdio4.cots.foodoffer.R;
@@ -23,6 +27,7 @@ public class LoginDialog extends AlertDialog {
     private EditText edt_username;
     private EditText edt_password;
     private Button btn_login;
+    String SHARED_PREFERENCES_NAME = "keydata";
 
     public LoginDialog(Context context) {
         super(context);
@@ -39,17 +44,22 @@ public class LoginDialog extends AlertDialog {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userame = edt_username.getText().toString();
+                String username = edt_username.getText().toString();
                 String password = edt_password.getText().toString();
                 String message = "{"+
-                        "\"email\":" + "\"" + edt_username.getText().toString() + "\","+
-                        "\"password\":" + "\"" + edt_password.getText().toString() + "\""+
+                        "\"email\":" + "\"" + username + "\","+
+                        "\"password\":" + "\"" + password + "\""+
                         "}";
                 Login(message, context);
+                SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, context.MODE_PRIVATE);
+                boolean st = sharedPreferences.getBoolean("IS_DATE",false);
+                if(st)
+                    alertDialog.hide();
             }
         });
         alertDialog.setView(dialog_login);
         alertDialog.show();
+
     }
 
     protected void Login(String message, Context context){
@@ -58,12 +68,21 @@ public class LoginDialog extends AlertDialog {
         StringRequest loginRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(context,response,Toast.LENGTH_SHORT).show();
+                try {
+                    JSONObject loginJSON = new JSONObject(response);
+                    boolean status= loginJSON.getBoolean("status");
+                    saveData(context,status);
+                  //  Toast.makeText(context,String.valueOf(status),Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"duc",Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -71,20 +90,30 @@ public class LoginDialog extends AlertDialog {
                 return "application/json; charset=utf-8";
             }
 
-
             @Override
             public byte[] getBody() throws AuthFailureError {
                 try {
-                    // Toast.makeText(getApplicationContext(),data,Toast.LENGTH_SHORT).show();
-
                     return message == null ? null : message.getBytes("utf-8");
-
                 } catch (UnsupportedEncodingException uee) {
-                    //Log.v("Unsupported Encoding while trying to get the bytes", data);
                     return null;
                 }
             }
         };
         requestQueue.add(loginRequest);
     }
+
+    public void saveData(Context context, boolean status){
+        SharedPreferences sharedPreferences =context.getSharedPreferences(SHARED_PREFERENCES_NAME, context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("IS_DATE",status);
+        editor.commit();
+    }
+
+    public void getData(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, context.MODE_PRIVATE);
+        boolean isFirtsLauncher = sharedPreferences.getBoolean("IS_DATE",false);
+
+    }
+
+
 }
