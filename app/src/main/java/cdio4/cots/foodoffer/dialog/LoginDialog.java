@@ -5,6 +5,17 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.io.UnsupportedEncodingException;
 
 import cdio4.cots.foodoffer.R;
 
@@ -28,10 +39,52 @@ public class LoginDialog extends AlertDialog {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String userame = edt_username.getText().toString();
+                String password = edt_password.getText().toString();
+                String message = "{"+
+                        "\"email\":" + "\"" + edt_username.getText().toString() + "\","+
+                        "\"password\":" + "\"" + edt_password.getText().toString() + "\""+
+                        "}";
+                Login(message, context);
             }
         });
-
         alertDialog.setView(dialog_login);
         alertDialog.show();
+    }
+
+    protected void Login(String message, Context context){
+        String URL="https://doan5.herokuapp.com/api/user/auth/login";
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        StringRequest loginRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(context,response,Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context,error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    // Toast.makeText(getApplicationContext(),data,Toast.LENGTH_SHORT).show();
+
+                    return message == null ? null : message.getBytes("utf-8");
+
+                } catch (UnsupportedEncodingException uee) {
+                    //Log.v("Unsupported Encoding while trying to get the bytes", data);
+                    return null;
+                }
+            }
+        };
+        requestQueue.add(loginRequest);
     }
 }
