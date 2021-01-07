@@ -4,7 +4,12 @@
     <string name="nav_discountcode">Mã giảm giá</string>
     <string name="nav_aboutus">Thông tin phiên bản</string>
     <string name="btn_dialog_login">Đăng nhập</string>
+    <string name="btn_dialog_cancle">Hủy</string>
+    <string name="btn_dialog_signup">Đăng ký</string>
+    <string name="btn_dialog_forget_password">Quên mật khẩu?</string>
     <string name="txt_dialog_title">Đăng nhập</string>
-    <string name="hint_edt_dialog_password">Nhập mật khẩu</string>
-    <string name="hint_edt_dialog_username">Tên đăng nhập</string>
+    <string name="txt_dialog_connect">-------------------- Hoặc --------------------</string>
+    <string name="hint_edt_dialog_password">Mật khẩu...</string>
+    <string name="hint_edt_dialog_username">Tên đăng nhập...</string>
+
 </resources>
