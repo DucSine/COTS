@@ -2,7 +2,6 @@ package cdio4.cots.foodoffer.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +26,6 @@ public class LoginDialog extends AlertDialog {
     private EditText edt_username;
     private EditText edt_password;
     private Button btn_login;
-    String SHARED_PREFERENCES_NAME = "keydata";
 
     public LoginDialog(Context context) {
         super(context);
@@ -51,10 +49,6 @@ public class LoginDialog extends AlertDialog {
                         "\"password\":" + "\"" + password + "\""+
                         "}";
                 Login(message, context);
-                SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, context.MODE_PRIVATE);
-                boolean st = sharedPreferences.getBoolean("IS_DATE",false);
-                if(st)
-                    alertDialog.hide();
             }
         });
         alertDialog.setView(dialog_login);
@@ -70,9 +64,7 @@ public class LoginDialog extends AlertDialog {
             public void onResponse(String response) {
                 try {
                     JSONObject loginJSON = new JSONObject(response);
-                    boolean status= loginJSON.getBoolean("status");
-                    saveData(context,status);
-                  //  Toast.makeText(context,String.valueOf(status),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,loginJSON.getString("status"),Toast.LENGTH_SHORT).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -82,7 +74,7 @@ public class LoginDialog extends AlertDialog {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context,"duc",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -101,19 +93,4 @@ public class LoginDialog extends AlertDialog {
         };
         requestQueue.add(loginRequest);
     }
-
-    public void saveData(Context context, boolean status){
-        SharedPreferences sharedPreferences =context.getSharedPreferences(SHARED_PREFERENCES_NAME, context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("IS_DATE",status);
-        editor.commit();
-    }
-
-    public void getData(Context context){
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, context.MODE_PRIVATE);
-        boolean isFirtsLauncher = sharedPreferences.getBoolean("IS_DATE",false);
-
-    }
-
-
 }
