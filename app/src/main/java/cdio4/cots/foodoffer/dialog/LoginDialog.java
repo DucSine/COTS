@@ -2,25 +2,14 @@ package cdio4.cots.foodoffer.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
-
 import cdio4.cots.foodoffer.R;
+import cdio4.cots.foodoffer.database.RequestAPI;
 
 public class LoginDialog extends AlertDialog {
     private EditText edt_username;
@@ -44,11 +33,22 @@ public class LoginDialog extends AlertDialog {
             public void onClick(View v) {
                 String username = edt_username.getText().toString();
                 String password = edt_password.getText().toString();
-                String message = "{"+
-                        "\"email\":" + "\"" + username + "\","+
-                        "\"password\":" + "\"" + password + "\""+
+                String message = "{" +
+                        "\"email\":" + "\"" + username + "\"," +
+                        "\"password\":" + "\"" + password + "\"" +
                         "}";
-                Login(message, context);
+                new AsyncTask<String, Void, String>() {
+                    @Override
+                    protected String doInBackground(String... strings) {
+                        return new RequestAPI(message, null).PostRequest(strings);
+                    }
+
+                    @Override
+                    protected void onPostExecute(String s) {
+                        super.onPostExecute(s);
+                        Toast.makeText(context,s,Toast.LENGTH_SHORT).show();
+                    }
+                }.execute("https://doan5.herokuapp.com/api/user/auth/login");
             }
         });
         alertDialog.setView(dialog_login);
@@ -56,41 +56,4 @@ public class LoginDialog extends AlertDialog {
 
     }
 
-    protected void Login(String message, Context context){
-        String URL="https://doan5.herokuapp.com/api/user/auth/login";
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        StringRequest loginRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject loginJSON = new JSONObject(response);
-                    Toast.makeText(context,loginJSON.getString("status"),Toast.LENGTH_SHORT).show();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context,error.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-                try {
-                    return message == null ? null : message.getBytes("utf-8");
-                } catch (UnsupportedEncodingException uee) {
-                    return null;
-                }
-            }
-        };
-        requestQueue.add(loginRequest);
-    }
 }
