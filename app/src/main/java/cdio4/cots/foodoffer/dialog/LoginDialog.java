@@ -120,7 +120,6 @@ public class LoginDialog extends AlertDialog {
         edt_usernameLayout = dialog_login.findViewById(R.id.ip_layout_dialog_username);
         edt_passwordLayout = dialog_login.findViewById(R.id.ip_layout_dialog_password);
         edt_username =  dialog_login.findViewById(R.id.ip_edt_dialog_username);
-        edt_password =  dialog_login.findViewById(R.id.ip_edt_dialog_password);
         edt_username.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -137,6 +136,7 @@ public class LoginDialog extends AlertDialog {
                 username = edt_username.getText().toString();
             }
         });
+        edt_password =  dialog_login.findViewById(R.id.ip_edt_dialog_password);
         edt_password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".UserInfomation" >
+    tools:context=".UserInfomationActivity" >
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -33,6 +33,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <RadioGroup
+            android:id="@+id/rbt_group_us_info_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -41,15 +42,15 @@
                 android:id="@+id/rbt_us_info_male"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Nam"
-                android:checked="true"/>
+                android:checked="true"
+                android:text="Nam" />
 
             <RadioButton
                 android:id="@+id/rbt_us_info_female"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Nữ"
-                android:checked="false"/>
+                android:checked="false"
+                android:text="Nữ" />
         </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -125,7 +126,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgv_us_info_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
