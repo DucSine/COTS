@@ -4,10 +4,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,8 +22,10 @@ import cdio4.cots.foodoffer.database.RequestAPI;
 public class LoginDialog extends AlertDialog {
     private Context context;
     private AlertDialog alertDialog;
-    private EditText edt_username;
-    private EditText edt_password;
+    private TextInputLayout edt_usernameLayout;
+    private TextInputLayout edt_passwordLayout;
+    private TextInputEditText edt_username;
+    private TextInputEditText edt_password;
     private Button btn_login;
     private SharedPreferences sharedPreferences;
     private String username;
@@ -37,14 +43,49 @@ public class LoginDialog extends AlertDialog {
         alertDialog = new AlertDialog.Builder(context).create();
         View dialog_login = getLayoutInflater().inflate(R.layout.dialog_login, null);
 
-        edt_username = dialog_login.findViewById(R.id.edt_dialog_username);
-        edt_password = dialog_login.findViewById(R.id.edt_dialog_password);
+        edt_usernameLayout = dialog_login.findViewById(R.id.ip_layout_dialog_username);
+        edt_passwordLayout = dialog_login.findViewById(R.id.ip_layout_dialog_password);
+        edt_username =  dialog_login.findViewById(R.id.ip_edt_dialog_username);
+        edt_password =  dialog_login.findViewById(R.id.ip_edt_dialog_password);
+
+        edt_username.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                username = edt_username.getText().toString();
+            }
+        });
+
+        edt_password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                password = edt_password.getText().toString();
+            }
+        });
+
         btn_login = dialog_login.findViewById(R.id.btn_dialog_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                username = edt_username.getText().toString();
-                password = edt_password.getText().toString();
                 String message = "{" +
                         "\"username\":" + "\"" + username + "\"," +
                         "\"password\":" + "\"" + password + "\"" +
