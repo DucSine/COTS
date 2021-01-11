@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 //tìm kiếm
                 return true;
             case R.id.toolbar_avatar:
-                new LoginDialog(this).show(this);
+                new LoginDialog(this).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
