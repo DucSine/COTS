@@ -9,15 +9,14 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="324dp"
-        android:layout_height="472dp"
+        android:layout_width="329dp"
+        android:layout_height="560dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783">
+        app:layout_constraintVertical_bias="1.0">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ip_layout_us_info_fullname"
@@ -32,6 +31,27 @@
                 android:hint="Họ và tên"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbt_us_info_male"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Nam"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/rbt_us_info_female"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Nữ"
+                android:checked="false"/>
+        </RadioGroup>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ip_layout_us_info_bdate"
             android:layout_width="match_parent"
@@ -45,6 +65,7 @@
                 android:hint="Ngày sinh"
                 android:inputType="date" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ip_layout_us_info_id"
             android:layout_width="match_parent"
@@ -58,6 +79,7 @@
                 android:hint="Số CMTND/Thẻ căn cước công dân"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ip_layout_us_info_phone"
             android:layout_width="match_parent"
@@ -71,6 +93,7 @@
                 android:hint="Số điện thoại"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ip_layout_us_info_email"
             android:layout_width="match_parent"
@@ -84,6 +107,7 @@
                 android:hint="Email"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ip_layout_us_info_adress"
             android:layout_width="match_parent"
@@ -99,5 +123,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.886"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.813"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

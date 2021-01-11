@@ -22,6 +22,7 @@ import cdio4.cots.foodoffer.database.RequestAPI;
 public class LoginDialog extends AlertDialog {
     private Context context;
     private AlertDialog alertDialog;
+    private View dialog_login;
     private TextInputLayout edt_usernameLayout;
     private TextInputLayout edt_passwordLayout;
     private TextInputEditText edt_username;
@@ -40,49 +41,8 @@ public class LoginDialog extends AlertDialog {
     }
 
     public void show() {
-        alertDialog = new AlertDialog.Builder(context).create();
-        View dialog_login = getLayoutInflater().inflate(R.layout.dialog_login, null);
+        InitDialogView();
 
-        edt_usernameLayout = dialog_login.findViewById(R.id.ip_layout_dialog_username);
-        edt_passwordLayout = dialog_login.findViewById(R.id.ip_layout_dialog_password);
-        edt_username =  dialog_login.findViewById(R.id.ip_edt_dialog_username);
-        edt_password =  dialog_login.findViewById(R.id.ip_edt_dialog_password);
-
-        edt_username.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                username = edt_username.getText().toString();
-            }
-        });
-
-        edt_password.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                password = edt_password.getText().toString();
-            }
-        });
-
-        btn_login = dialog_login.findViewById(R.id.btn_dialog_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +96,7 @@ public class LoginDialog extends AlertDialog {
             }
         }.execute(context.getResources().getString(R.string.url_Login));
     }
-///
+
     protected void SharedPreferencesSaveData(String fileName){
         sharedPreferences= context.getSharedPreferences(context.getResources().getString(R.string.shared_preferences_login), Context.MODE_PRIVATE);
 
@@ -152,5 +112,47 @@ public class LoginDialog extends AlertDialog {
 
     protected void SharedPreferencesGetData(String fileName){
         sharedPreferences.getBoolean("status",false); // false is default value
+    }
+
+    private void InitDialogView(){
+        alertDialog = new AlertDialog.Builder(context).create();
+        dialog_login = getLayoutInflater().inflate(R.layout.dialog_login, null);
+        edt_usernameLayout = dialog_login.findViewById(R.id.ip_layout_dialog_username);
+        edt_passwordLayout = dialog_login.findViewById(R.id.ip_layout_dialog_password);
+        edt_username =  dialog_login.findViewById(R.id.ip_edt_dialog_username);
+        edt_password =  dialog_login.findViewById(R.id.ip_edt_dialog_password);
+        edt_username.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                username = edt_username.getText().toString();
+            }
+        });
+        edt_password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                password = edt_password.getText().toString();
+            }
+        });
+        btn_login = dialog_login.findViewById(R.id.btn_dialog_login);
     }
 }
