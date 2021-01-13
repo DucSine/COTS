@@ -1,5 +1,6 @@
 package cdio4.cots.foodoffer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ActionBar actionBar;
     private NavigationView navigationView;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +36,19 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_userinfo:
-                        Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this, UserInfomationActivity.class);
                         break;
                     case R.id.nav_discountcode:
-                        Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this, DiscountCodeActivity.class);
                         break;
                     case R.id.nav_aboutus:
-                        Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this, UserInfomationActivity.class);
                         break;
                 }
-
+                startActivity(intent);
                 item.setChecked(true);
                 mDrawerLayout.closeDrawers();
+                Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
             case R.id.toolbar_search:
-                //tìm kiếm
+                AppBAr_Search();
                 return true;
             case R.id.toolbar_avatar:
                 new LoginDialog(this).show();
@@ -76,12 +79,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void InitLayout(){
         toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        setSupportActionBar(toolbar);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
     }
 
+    protected  void AppBAr_Search(){
+        // post api
+        //phân tích json
+        //hiển thị
+        // đề xuất: live data
+    }
 }

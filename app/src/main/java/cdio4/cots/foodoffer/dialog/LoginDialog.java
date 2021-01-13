@@ -42,7 +42,7 @@ public class LoginDialog extends AlertDialog {
 
     public void show() {
         InitDialogView();
-
+        btn_login.setEnabled(false);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,6 +128,11 @@ public class LoginDialog extends AlertDialog {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() ==0)
+                    edt_usernameLayout.setError("Vui Lòng nhập tên đăng nhập");
+                //if (edt_username.getText().toString())
+                else
+                    edt_passwordLayout.setError(null);
 
             }
 
@@ -156,3 +161,5 @@ public class LoginDialog extends AlertDialog {
         btn_login = dialog_login.findViewById(R.id.btn_dialog_login);
     }
 }
+//Lỗi: đóng app nếu k bật internet
+//Lỗi: đóng app nếu k translate đc json

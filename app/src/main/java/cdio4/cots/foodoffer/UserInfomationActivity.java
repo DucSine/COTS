@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.regex.Pattern;
+
 public class UserInfomationActivity extends AppCompatActivity {
     //trang thông tin cá nhân
     // thuộc navgationview
@@ -38,6 +40,8 @@ public class UserInfomationActivity extends AppCompatActivity {
     private String phone;
     private String email;
     private String address;
+    Pattern pattern = Pattern.compile("\\d{1,2}[-|/]\\d{1,2}[-|/]\\d{4}");
+    //Matcher matcher = pattern.matcher(text1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +59,23 @@ public class UserInfomationActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 // reglarvalidation exeptions viết ở đây
+                //get valuedation exprresssion
+
                 if (charSequence.length() ==0)
                     edt_usFullnameLayout.setError("Vui lòng nhập họ tên");
                 else
                     edt_usFullnameLayout.setError(null);
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
                 //gán dữ liệu
                 fullName = edt_usFullname.getText().toString();
+               /* if (fullName == null)
+                    edt_usFullnameLayout.setError("Vui lòng nhập họ tên");
+                else
+                    edt_usFullnameLayout.setError(null);*/
             }
         });
         // bdate tạo DateTimePicker
@@ -173,7 +184,9 @@ public class UserInfomationActivity extends AppCompatActivity {
         edt_usAdress = findViewById(R.id.ip_edt_us_info_adress);
 
         rbtGroupGender = findViewById(R.id.rbt_group_us_info_gender);
-        rbt_usMale = rbtGroupGender.findViewById(R.id.rbt_group_us_info_gender);
-        rbt_usFemale = rbtGroupGender.findViewById(R.id.rbt_group_us_info_gender);
+        rbt_usMale = rbtGroupGender.findViewById(R.id.rbt_us_info_male);
+        rbt_usFemale = rbtGroupGender.findViewById(R.id.rbt_us_info_female);
     }
+
+   // protected
 }
