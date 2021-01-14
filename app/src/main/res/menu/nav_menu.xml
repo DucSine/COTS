@@ -2,15 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_userinfo"
+            android:id="@+id/nav_userInfomation"
             android:icon="@android:drawable/ic_menu_camera"
             android:title="@string/nav_userinfo" />
         <item
-            android:id="@+id/nav_discountcode"
+            android:id="@+id/nav_discountCode"
             android:icon="@android:drawable/ic_menu_gallery"
             android:title="@string/nav_discountcode" />
         <item
-            android:id="@+id/nav_aboutus"
+            android:id="@+id/nav_userChangePass"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/nav_userChangePass" />
+        <item
+            android:id="@+id/nav_aboutUs"
             android:icon="@android:drawable/ic_menu_slideshow"
             android:title="@string/nav_aboutus" />
     </group>

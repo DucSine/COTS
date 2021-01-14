@@ -42,7 +42,7 @@ public class LoginDialog extends AlertDialog {
 
     public void show() {
         InitDialogView();
-        btn_login.setEnabled(false);
+       // btn_login.setEnabled(false);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +123,7 @@ public class LoginDialog extends AlertDialog {
         edt_username.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                
             }
 
             @Override

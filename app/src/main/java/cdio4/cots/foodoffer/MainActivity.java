@@ -13,10 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
 import cdio4.cots.foodoffer.dialog.LoginDialog;
+import cdio4.cots.foodoffer.ui.home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -25,24 +28,35 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private Intent intent;
 
+    private static final int Home_Fragment = 1;
+    private static final int Aboutus_Fragment = 2;
+    private int curentFragment = Home_Fragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InitLayout();
-
+        replaceFragment(new HomeFragment());
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.nav_userinfo:
+                    case R.id.nav_userInfomation:
                         intent = new Intent(MainActivity.this, UserInfomationActivity.class);
                         break;
-                    case R.id.nav_discountcode:
+                    case R.id.nav_discountCode:
                         intent = new Intent(MainActivity.this, DiscountCodeActivity.class);
                         break;
-                    case R.id.nav_aboutus:
-                        intent = new Intent(MainActivity.this, UserInfomationActivity.class);
+                    case R.id.nav_userChangePass:
+                        intent =new Intent(MainActivity.this, ChangePasswordActivity.class);
+                    case R.id.nav_aboutUs:
+                        intent = new Intent(MainActivity.this, AboutUsActivity.class);
+                        /*
+                        if (Aboutus_Fragment != curentFragment) {
+                          //  replaceFragment(new AboutUsFragment());
+                            curentFragment = Home_Fragment;
+                        }*/
                         break;
                 }
                 startActivity(intent);
@@ -54,9 +68,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void invalidateOptionsMenu() {
+        super.invalidateOptionsMenu();
+    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_toolbar_main, menu);
+
         return true;
     }
 
@@ -71,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 AppBAr_Search();
                 return true;
             case R.id.toolbar_avatar:
+
                 new LoginDialog(this).show();
                 return true;
         }
@@ -92,5 +113,11 @@ public class MainActivity extends AppCompatActivity {
         //phân tích json
         //hiển thị
         // đề xuất: live data
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_layout, fragment);
+        transaction.commit();
     }
 }

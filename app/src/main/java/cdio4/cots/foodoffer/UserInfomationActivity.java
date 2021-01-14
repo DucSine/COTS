@@ -12,11 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.regex.Pattern;
-
 public class UserInfomationActivity extends AppCompatActivity {
     //trang thông tin cá nhân
     // thuộc navgationview
+
     private ImageView imgv_avatar;
     private TextInputLayout edt_usFullnameLayout;
     private TextInputLayout edt_usBdateLayout;
@@ -40,7 +39,7 @@ public class UserInfomationActivity extends AppCompatActivity {
     private String phone;
     private String email;
     private String address;
-    Pattern pattern = Pattern.compile("\\d{1,2}[-|/]\\d{1,2}[-|/]\\d{4}");
+    //Pattern pattern = Pattern.compile("\\d{1,2}[-|/]\\d{1,2}[-|/]\\d{4}");
     //Matcher matcher = pattern.matcher(text1);
 
     @Override
@@ -60,12 +59,10 @@ public class UserInfomationActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 // reglarvalidation exeptions viết ở đây
                 //get valuedation exprresssion
-
                 if (charSequence.length() ==0)
                     edt_usFullnameLayout.setError("Vui lòng nhập họ tên");
                 else
                     edt_usFullnameLayout.setError(null);
-
             }
 
             @Override
@@ -103,7 +100,10 @@ public class UserInfomationActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                if (charSequence.length() ==0)
+                    edt_usIDLayout.setError("Vui lòng nhâp CMTND/ thẻ căn cước công dân");
+                else
+                    edt_usIDLayout.setError(null);
             }
 
             @Override
@@ -119,6 +119,10 @@ public class UserInfomationActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() ==0)
+                    edt_usPhoneLayout.setError("Số điện thoại không được để trống");
+                else
+                    edt_usPhoneLayout.setError(null);
 
             }
 
@@ -130,7 +134,10 @@ public class UserInfomationActivity extends AppCompatActivity {
         edt_usEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                if (charSequence.length() ==0)
+                    edt_usEmailLayout.setError("Vui lòng nhập email");
+                else
+                    edt_usEmailLayout.setError(null);
             }
 
             @Override
@@ -163,6 +170,7 @@ public class UserInfomationActivity extends AppCompatActivity {
     }
 
     private void InitLayout(){
+
         imgv_avatar = findViewById(R.id.imgv_us_info_avatar);
 
         edt_usFullnameLayout = findViewById(R.id.ip_layout_us_info_fullname);
@@ -188,5 +196,4 @@ public class UserInfomationActivity extends AppCompatActivity {
         rbt_usFemale = rbtGroupGender.findViewById(R.id.rbt_us_info_female);
     }
 
-   // protected
 }

@@ -5,6 +5,11 @@
     <string name="nav_userinfo">Thông tin cá nhân</string>
     <string name="nav_discountcode">Mã giảm giá</string>
     <string name="nav_aboutus">Thông tin phiên bản</string>
+    <string name="nav_userChangePass">Đổi mật khẩu</string>
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
 
     <!--dialog view-->
     <string name="btn_dialog_login">Đăng nhập</string>
