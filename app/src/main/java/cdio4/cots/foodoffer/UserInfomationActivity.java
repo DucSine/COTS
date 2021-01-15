@@ -45,7 +45,6 @@ public class UserInfomationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_infomation);
         //khởi tạo layout
         InitLayout();
         //bắt lỗi nhập dữ liệu, gán dẽ liệu
@@ -170,7 +169,7 @@ public class UserInfomationActivity extends AppCompatActivity {
     }
 
     private void InitLayout(){
-
+        setContentView(R.layout.activity_user_infomation);
         imgv_avatar = findViewById(R.id.imgv_us_info_avatar);
 
         edt_usFullnameLayout = findViewById(R.id.ip_layout_us_info_fullname);

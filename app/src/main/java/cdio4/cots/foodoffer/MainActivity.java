@@ -18,7 +18,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
-import cdio4.cots.foodoffer.dialog.LoginDialog;
 import cdio4.cots.foodoffer.ui.home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,13 +49,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_userChangePass:
                         intent =new Intent(MainActivity.this, ChangePasswordActivity.class);
+                        break;
                     case R.id.nav_aboutUs:
                         intent = new Intent(MainActivity.this, AboutUsActivity.class);
-                        /*
-                        if (Aboutus_Fragment != curentFragment) {
-                          //  replaceFragment(new AboutUsFragment());
-                            curentFragment = Home_Fragment;
-                        }*/
                         break;
                 }
                 startActivity(intent);

@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cdio4.cots.foodoffer">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,12 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodOffer">
-        <activity android:name=".LoginActivity" android:theme="@style/Theme.FoodOffer.NoActionBar">></activity>
+        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.FoodOffer.NoActionBar" />
         <activity android:name=".TransactionHistoryActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".AboutUsActivity" />
         <activity android:name=".DiscountCodeActivity" />
-        <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".UserInfomationActivity" />
         <activity
             android:name=".MainActivity"
@@ -29,5 +29,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
