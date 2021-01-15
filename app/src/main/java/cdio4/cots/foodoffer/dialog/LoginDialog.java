@@ -2,6 +2,7 @@ package cdio4.cots.foodoffer.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.text.Editable;
@@ -10,11 +11,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
+import com.firebase.ui.auth.AuthMethodPickerLayout;
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.IdpResponse;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Arrays;
+import java.util.List;
 
 import cdio4.cots.foodoffer.R;
 import cdio4.cots.foodoffer.database.RequestAPI;
@@ -35,13 +46,13 @@ public class LoginDialog extends AlertDialog {
     private String token;
     private String errorMessage;
 
-    public LoginDialog(Context context){
+    protected LoginDialog(Context context) {
         super(context);
-        this.context = context;
     }
 
+
     public void show() {
-        InitDialogView();
+      //  InitDialogView();
        // btn_login.setEnabled(false);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +125,7 @@ public class LoginDialog extends AlertDialog {
         sharedPreferences.getBoolean("status",false); // false is default value
     }
 
-    private void InitDialogView(){
+   /* private void InitDialogView(){
         alertDialog = new AlertDialog.Builder(context).create();
         dialog_login = getLayoutInflater().inflate(R.layout.dialog_login, null);
         edt_usernameLayout = dialog_login.findViewById(R.id.ip_layout_dialog_username);
@@ -159,7 +170,12 @@ public class LoginDialog extends AlertDialog {
             }
         });
         btn_login = dialog_login.findViewById(R.id.btn_dialog_login);
-    }
+    }*/
 }
 //Lỗi: đóng app nếu k bật internet
 //Lỗi: đóng app nếu k translate đc json
+
+
+
+
+

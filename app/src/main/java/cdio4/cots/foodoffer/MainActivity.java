@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 AppBAr_Search();
                 return true;
             case R.id.toolbar_avatar:
-
-                new LoginDialog(this).show();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                //new LoginDialog(this).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
