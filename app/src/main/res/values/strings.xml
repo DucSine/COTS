@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Food Offer</string>
-    <string name="login_activity">Đăng Nhập</string>
+    <string name="lable_Login_Activity">Đăng Nhập</string>
+    <string name="lable_ChangePasswordActivity">Đổi Mật Khẩu</string>
 
     <!--navigation menu-->
     <string name="nav_userinfo">Thông tin cá nhân</string>

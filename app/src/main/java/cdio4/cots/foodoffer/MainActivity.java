@@ -63,18 +63,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void invalidateOptionsMenu() {
-        super.invalidateOptionsMenu();
-    }
-
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_toolbar_main, menu);
-
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
