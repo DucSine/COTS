@@ -22,7 +22,6 @@
         <activity android:name=".UserInfomationActivity" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
             android:theme="@style/Theme.FoodOffer.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
