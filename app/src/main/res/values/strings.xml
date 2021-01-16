@@ -61,6 +61,8 @@
     <string name="database_name">EnterName</string>
     <string name="table_name1">Table1</string>
 
+    <!--fragment-->
+    <string name="fragmentID">fragmentID</string>
     <!-- request url-->
     <string name="url_Login">https://doan5.herokuapp.com/api/user/auth/login</string>
     <string name="url_Signin">https://doan5.herokuapp.com/api/user/auth/register</string>

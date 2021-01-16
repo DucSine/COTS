@@ -18,7 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
-import cdio4.cots.foodoffer.ui.home.HomeFragment;
+import cdio4.cots.foodoffer.ui.HomeFragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mDrawerLayout;
@@ -77,18 +77,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.nav_userInfomation:
                 intent = new Intent(MainActivity.this, MainAccountActivity.class);
+                intent.putExtra(getResources().getString(R.string.fragmentID),2);
                 break;
             case R.id.nav_discountCode:
-                intent = new Intent(MainActivity.this, DiscountCodeActivity.class);
+                //intent = new Intent(MainActivity.this, DiscountCodeActivity.class);
                 break;
             case R.id.nav_cart:
                 intent = new Intent(MainActivity.this, CartActivity.class);
                 break;
             case R.id.nav_historyTransaction:
-                intent = new Intent(MainActivity.this, HistoryTransactionActivity.class);
+                //intent = new Intent(MainActivity.this, HistoryTransactionActivity.class);
                 break;
             case R.id.nav_userChangePass:
                 intent =new Intent(MainActivity.this, MainAccountActivity.class);
+                intent.putExtra(getResources().getString(R.string.fragmentID),3);
                 break;
             case R.id.nav_aboutUs:
                 intent = new Intent(MainActivity.this, AboutUsActivity.class);

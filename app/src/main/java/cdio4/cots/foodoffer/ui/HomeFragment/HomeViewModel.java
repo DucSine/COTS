@@ -1,4 +1,4 @@
-package cdio4.cots.foodoffer.ui.home;
+package cdio4.cots.foodoffer.ui.HomeFragment;
 
 import androidx.lifecycle.ViewModel;
 

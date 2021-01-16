@@ -10,14 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodOffer">
         <activity android:name=".MainAccountActivity"></activity>
-        <activity android:name=".HistoryTransactionActivity" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.FoodOffer.NoActionBar" />
         <activity android:name=".CartActivity" />
         <activity android:name=".AboutUsActivity" />
-        <activity android:name=".DiscountCodeActivity" />
-        <activity android:name=".UserInfomationActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.FoodOffer.NoActionBar">

@@ -79,7 +79,7 @@
             android:background="@drawable/bg_teal700"
             android:gravity="center"
             android:padding="12dp"
-            android:text="@string/txt_dialog_title"
+            android:text="@string/lable_Login_Activity"
             android:textColor="@color/white"
             android:textSize="16pt"
             android:textStyle="bold" />
@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_white_corner_10_border_gray"
             android:padding="12dp"
-            android:hint="@string/hint_edt_dialog_username"
+            android:hint="@string/hint_userName"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,7 +144,7 @@
             android:id="@+id/ip_edt_dialog_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_edt_dialog_password"
+            android:hint="@string/hint_password"
             android:background="@drawable/bg_white_corner_10_border_gray"
             android:padding="12dp"
             android:inputType="textPassword" />
@@ -170,7 +170,7 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:background="@drawable/bg_teal700_corner_10"
-            android:text="@string/btn_dialog_login"
+            android:text="@string/btn_login"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
@@ -181,7 +181,7 @@
             android:layout_weight="1"
             android:alpha="0.7"
             android:background="@drawable/bg_darkgray_corner_10"
-            android:text="@string/btn_dialog_cancle"
+            android:text="@string/btn_cancle"
             android:textColor="@color/white"
             android:textSize="14sp" />
     </LinearLayout>
@@ -192,7 +192,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/cardview_shadow_end_color"
-        android:text="@string/btn_dialog_forget_password" />
+        android:text="@string/btn_forgetPassword" />
 
     <TextView
         android:id="@+id/txt_dialog_connect"
@@ -206,7 +206,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:background="@drawable/bg_teal700_corner_10"
-        android:text="@string/btn_dialog_signup"
+        android:text="@string/btn_signup"
         android:textColor="@color/white" />
     <Button
         android:id="@+id/btn_phone_sign_in"

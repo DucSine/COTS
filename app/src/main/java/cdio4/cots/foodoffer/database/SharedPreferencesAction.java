@@ -18,7 +18,7 @@ public class SharedPreferencesAction {
         this.fileName = fileName;
     }
 
-    protected void SharedPreferencesSaveData(String fileName){
+    public void SharedPreferencesSaveData(String fileName){
         sharedPreferences= context.getSharedPreferences(context.getResources().getString(R.string.shared_preferences_login), Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
