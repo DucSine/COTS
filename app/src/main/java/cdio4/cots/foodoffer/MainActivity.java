@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_userInfomation:
-                intent = new Intent(MainActivity.this, UserInfomationActivity.class);
+                intent = new Intent(MainActivity.this, MainAccountActivity.class);
                 break;
             case R.id.nav_discountCode:
                 intent = new Intent(MainActivity.this, DiscountCodeActivity.class);
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(MainActivity.this, HistoryTransactionActivity.class);
                 break;
             case R.id.nav_userChangePass:
-                intent =new Intent(MainActivity.this, ChangePasswordActivity.class);
+                intent =new Intent(MainActivity.this, MainAccountActivity.class);
                 break;
             case R.id.nav_aboutUs:
                 intent = new Intent(MainActivity.this, AboutUsActivity.class);
