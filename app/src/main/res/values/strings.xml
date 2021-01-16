@@ -30,6 +30,10 @@
     <string name="nav_logout">Đăng xuất</string>
 
     <!--bottom menu-->
+    <string name="tab_hot">Nổi bật</string>
+    <string name="tab_favorite">Yêu thích</string>
+    <string name="tab_sale_code">Mã giảm giá</string>
+    <string name="tab_notification">Thông báo</string>
 
     <!--label/hint-->
     <string name="btn_login">Đăng nhập</string>
@@ -67,4 +71,6 @@
     <string name="url_GetAccount">https://doan5.herokuapp.com/api/user/auth/getMe</string>
     <string name="url_UpdateAccount">https://doan5.herokuapp.com/api/user/auth/update</string>
     <string name="url_ChangePassword">https://doan5.herokuapp.com/api/user/auth/updatePassword</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
