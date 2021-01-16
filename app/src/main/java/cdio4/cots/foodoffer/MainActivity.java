@@ -20,7 +20,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import cdio4.cots.foodoffer.ui.home.HomeFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mDrawerLayout;
     private Toolbar toolbar;
     private ActionBar actionBar;
@@ -30,37 +30,23 @@ public class MainActivity extends AppCompatActivity {
     private static final int Home_Fragment = 1;
     private static final int Aboutus_Fragment = 2;
     private int curentFragment = Home_Fragment;
+    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InitLayout();
-        replaceFragment(new HomeFragment());
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_userInfomation:
-                        intent = new Intent(MainActivity.this, UserInfomationActivity.class);
-                        break;
-                    case R.id.nav_discountCode:
-                        intent = new Intent(MainActivity.this, DiscountCodeActivity.class);
-                        break;
-                    case R.id.nav_userChangePass:
-                        intent =new Intent(MainActivity.this, ChangePasswordActivity.class);
-                        break;
-                    case R.id.nav_aboutUs:
-                        intent = new Intent(MainActivity.this, AboutUsActivity.class);
-                        break;
-                }
-                startActivity(intent);
-                item.setChecked(true);
-                mDrawerLayout.closeDrawers();
-                Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
+        navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
+    }
+
+    @Override
+    public void onBackPressed() {
+       // DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if(mDrawerLayout.isDrawerOpen(GravityCompat.START))
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -86,6 +72,38 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_userInfomation:
+                intent = new Intent(MainActivity.this, UserInfomationActivity.class);
+                break;
+            case R.id.nav_discountCode:
+                intent = new Intent(MainActivity.this, DiscountCodeActivity.class);
+                break;
+            case R.id.nav_cart:
+                intent = new Intent(MainActivity.this, CartActivity.class);
+                break;
+            case R.id.nav_historyTransaction:
+                intent = new Intent(MainActivity.this, HistoryTransactionActivity.class);
+                break;
+            case R.id.nav_userChangePass:
+                intent =new Intent(MainActivity.this, ChangePasswordActivity.class);
+                break;
+            case R.id.nav_aboutUs:
+                intent = new Intent(MainActivity.this, AboutUsActivity.class);
+                break;
+            case R.id.nav_logout:
+                // xóa token id, thu hồi tài nguyên
+                break;
+        }
+        startActivity(intent);
+        item.setChecked(true);
+        mDrawerLayout.closeDrawers();
+        Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
+        return true;
+    }
+
     private void InitLayout(){
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -94,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+
+        replaceFragment(new HomeFragment()); // default home fragment
     }
 
     protected  void AppBAr_Search(){
@@ -108,4 +128,5 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.content_layout, fragment);
         transaction.commit();
     }
+
 }

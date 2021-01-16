@@ -13,7 +13,7 @@
         android:background="@drawable/bg_teal700"
         android:gravity="center"
         android:padding="12dp"
-        android:text="@string/txt_dialog_title"
+        android:text="@string/lable_Login_Activity"
         android:textColor="@color/white"
         android:textSize="16pt"
         android:textStyle="bold" />
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_white_corner_10_border_gray"
-                android:hint="@string/hint_edt_dialog_username"
+                android:hint="@string/hint_userName"
                 android:inputType="textPersonName"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_white_corner_10_border_gray"
-                android:hint="@string/hint_edt_dialog_password"
+                android:hint="@string/hint_password"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,7 +65,7 @@
                 android:id="@+id/cb_activity_login_savepassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lưu mật khẩu"
+                android:text="@string/cb_saveAccount"
                 android:layout_marginEnd="50dp"/>
 
             <Button
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/cardview_shadow_end_color"
                 android:textColor="@color/black"
-                android:text="@string/btn_dialog_forget_password" />
+                android:text="@string/btn_forgetPassword" />
         </LinearLayout>
     </LinearLayout>
 
@@ -92,7 +92,7 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:background="@drawable/bg_teal700_corner_10"
-            android:text="@string/btn_dialog_login"
+            android:text="@string/btn_login"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
@@ -103,7 +103,7 @@
             android:layout_weight="1"
             android:alpha="0.7"
             android:background="@drawable/bg_darkgray_corner_10"
-            android:text="@string/btn_dialog_cancle"
+            android:text="@string/btn_cancle"
             android:textColor="@color/white"
             android:textSize="14sp" />
     </LinearLayout>
@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:background="@drawable/bg_teal700_corner_10"
-        android:text="@string/btn_dialog_signup"
+        android:text="@string/btn_signup"
         android:textColor="@color/white" />
 
     <TextView
@@ -129,7 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:drawableLeft="@drawable/ic_phone_black_24dp"
-        android:text="Sign In with Phone"
+        android:text="@string/btn_fbLogin"
         android:textColor="@color/black"
         android:textSize="12dp"
         app:backgroundTint="#FFFFFF" />
@@ -140,7 +140,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:drawableLeft="@drawable/fui_ic_googleg_color_24dp"
-        android:text="Sign In with Google"
+        android:text="@string/btn_ggLogin"
         android:textColor="@color/black"
         android:textSize="12dp"
         app:backgroundTint="#FFFFFF" />

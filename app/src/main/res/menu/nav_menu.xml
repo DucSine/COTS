@@ -10,6 +10,14 @@
             android:icon="@android:drawable/ic_menu_gallery"
             android:title="@string/nav_discountcode" />
         <item
+            android:id="@+id/nav_cart"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/nav_cart" />
+        <item
+            android:id="@+id/nav_historyTransaction"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/nav_historyTransaction" />
+        <item
             android:id="@+id/nav_userChangePass"
             android:icon="@android:drawable/ic_menu_gallery"
             android:title="@string/nav_userChangePass" />
@@ -17,5 +25,9 @@
             android:id="@+id/nav_aboutUs"
             android:icon="@android:drawable/ic_menu_slideshow"
             android:title="@string/nav_aboutus" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@android:drawable/ic_menu_slideshow"
+            android:title="@string/nav_logout" />
     </group>
 </menu>

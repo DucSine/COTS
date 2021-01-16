@@ -3,10 +3,15 @@ package cdio4.cots.foodoffer;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -168,6 +173,18 @@ public class UserInfomationActivity extends AppCompatActivity {
         //viết sự kiện rbtGroup và gán dữ liệu cho biến gender, male = true; female = false
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.confirm_toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.toolbar_confirm)
+            Toast.makeText(getApplicationContext(),"ok",Toast.LENGTH_SHORT).show();
+        return true;
+    }
     private void InitLayout(){
         setContentView(R.layout.activity_user_infomation);
         imgv_avatar = findViewById(R.id.imgv_us_info_avatar);
