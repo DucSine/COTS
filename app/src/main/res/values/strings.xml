@@ -14,6 +14,7 @@
     <string name="toolbar_search">Search</string>
     <string name="toolbar_avatar">avatar</string>
     <string name="toolbar_confirm">Xác nhận</string>
+    <string name="toolbar_next">Tiếp theo</string>
 
     <!--navigation-->
     <!--nav_header-->
@@ -30,6 +31,10 @@
     <string name="nav_logout">Đăng xuất</string>
 
     <!--bottom menu-->
+    <string name="tab_hot">Nổi bật</string>
+    <string name="tab_favorite">Yêu thích</string>
+    <string name="tab_sale_code">Mã giảm giá</string>
+    <string name="tab_notification">Thông báo</string>
 
     <!--label/hint-->
     <string name="btn_login">Đăng nhập</string>
@@ -61,12 +66,13 @@
     <string name="database_name">EnterName</string>
     <string name="table_name1">Table1</string>
 
-    <!--fragment-->
-    <string name="fragmentID">fragmentID</string>
     <!-- request url-->
     <string name="url_Login">https://doan5.herokuapp.com/api/user/auth/login</string>
     <string name="url_Signin">https://doan5.herokuapp.com/api/user/auth/register</string>
     <string name="url_GetAccount">https://doan5.herokuapp.com/api/user/auth/getMe</string>
     <string name="url_UpdateAccount">https://doan5.herokuapp.com/api/user/auth/update</string>
     <string name="url_ChangePassword">https://doan5.herokuapp.com/api/user/auth/updatePassword</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragmentID">fragmentID</string>
 </resources>
