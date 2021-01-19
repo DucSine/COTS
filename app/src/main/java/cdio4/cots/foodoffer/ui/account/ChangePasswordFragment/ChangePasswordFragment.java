@@ -1,4 +1,4 @@
-package cdio4.cots.foodoffer.ui.account.ChangePassword;
+package cdio4.cots.foodoffer.ui.account.ChangePasswordFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

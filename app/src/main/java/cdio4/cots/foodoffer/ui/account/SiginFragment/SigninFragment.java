@@ -1,6 +1,7 @@
 package cdio4.cots.foodoffer.ui.account.SiginFragment;
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,14 +29,6 @@ public class SigninFragment extends Fragment {
         edt_userName.addTextChangedListener(edt_userName_Event);
         edt_password.addTextChangedListener(edt_password_Event);
         edt_passwordConfirm.addTextChangedListener(edt_passswordConfirm_Event);
-        /*
-        * homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        * */
         return root;
     }
 
@@ -58,8 +51,9 @@ public class SigninFragment extends Fragment {
 
     private SigninViewModel signinViewModel;
     private View root;
-    private Intent intent;
+    private Context context;
     private RegularExpression regularExpression = new RegularExpression();
+    private SharedPreferences sharedPreferences;
 
     private TextInputLayout edt_userNameLayout;
     private TextInputLayout edt_passwordLayout;
@@ -120,6 +114,18 @@ public class SigninFragment extends Fragment {
             passwordConfirm = edt_passwordConfirm.getText().toString();
         }
     };
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
 
     public static SigninFragment newInstance() {
         return new SigninFragment();

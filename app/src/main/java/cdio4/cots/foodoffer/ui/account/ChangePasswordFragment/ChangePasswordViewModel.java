@@ -1,4 +1,4 @@
-package cdio4.cots.foodoffer.ui.account.ChangePassword;
+package cdio4.cots.foodoffer.ui.account.ChangePasswordFragment;
 
 import androidx.lifecycle.ViewModel;
 

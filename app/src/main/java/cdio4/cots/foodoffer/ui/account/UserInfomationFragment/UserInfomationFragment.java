@@ -41,8 +41,7 @@ public class UserInfomationFragment extends Fragment {
         // TODO: Use the ViewModel
     }
 
-    /*
-    private void InitLayout(){
+   /* private void InitLayout(){
         setContentView(R.layout.activity_user_infomation);
         imgv_avatar = findViewById(R.id.imgv_us_info_avatar);
 
@@ -67,7 +66,8 @@ public class UserInfomationFragment extends Fragment {
         rbtGroupGender = findViewById(R.id.rbt_group_us_info_gender);
         rbt_usMale = rbtGroupGender.findViewById(R.id.rbt_us_info_male);
         rbt_usFemale = rbtGroupGender.findViewById(R.id.rbt_us_info_female);
-     */
+    }
+    */
     private UserInfomationViewModel userInfomationViewModel;
     private View root;
 
@@ -95,8 +95,7 @@ public class UserInfomationFragment extends Fragment {
     private String phone = "";
     private String email = "";
     private String address = "";
-    //Pattern pattern = Pattern.compile("\\d{1,2}[-|/]\\d{1,2}[-|/]\\d{4}");
-    //Matcher matcher = pattern.matcher(text1);
+
     private TextWatcher edt_fullName_Event = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
