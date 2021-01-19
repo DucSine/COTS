@@ -1,4 +1,4 @@
-package cdio4.cots.foodoffer.ui.home.Fragment.Favorite;
+package cdio4.cots.foodoffer.ui.HomeFragment.Fragment.Favorite;
 
 import androidx.lifecycle.ViewModel;
 

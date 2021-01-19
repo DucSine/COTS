@@ -1,16 +1,14 @@
-package cdio4.cots.foodoffer.ui.home.Fragment.Notification;
-
-import androidx.lifecycle.ViewModelProvider;
+package cdio4.cots.foodoffer.ui.HomeFragment.Fragment.Notification;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.lifecycle.ViewModelProvider;
 
 import cdio4.cots.foodoffer.R;
 

@@ -1,4 +1,4 @@
-package cdio4.cots.foodoffer.ui.HomeFragment.Fragment.Favorite;
+package cdio4.cots.foodoffer.ui.HomeFragment.Fragment.SaleCode;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,24 @@ import androidx.lifecycle.ViewModelProvider;
 
 import cdio4.cots.foodoffer.R;
 
-public class FavoriteFragment extends Fragment {
+public class SaleCodeFragment extends Fragment {
 
-    private FavoriteViewModel mViewModel;
+    private SaleCodeViewModel mViewModel;
 
-    public static FavoriteFragment newInstance() {
-        return new FavoriteFragment();
+    public static SaleCodeFragment newInstance() {
+        return new SaleCodeFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.favorite_fragment, container, false);
+        return inflater.inflate(R.layout.sale_code_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(FavoriteViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(SaleCodeViewModel.class);
         // TODO: Use the ViewModel
     }
 

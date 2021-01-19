@@ -21,6 +21,8 @@ import cdio4.cots.foodoffer.R;
 import cdio4.cots.foodoffer.regx.RegularExpression;
 
 public class SigninFragment extends Fragment {
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -90,7 +92,7 @@ public class SigninFragment extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            regularExpression.checkNull(edt_userNameLayout,charSequence,"Vui lòng nhập mật khẩu");
+            regularExpression.checkNull(edt_passwordLayout,charSequence,"Vui lòng nhập mật khẩu");
         }
 
         @Override
@@ -106,7 +108,7 @@ public class SigninFragment extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            regularExpression.checkNull(edt_userNameLayout,charSequence,"Vui lòng nhập lại mật khẩu");
+            regularExpression.checkNull(edt_passwordConfirmLayout,charSequence,"Vui lòng nhập lại mật khẩu");
         }
 
         @Override

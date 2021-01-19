@@ -23,10 +23,6 @@ import cdio4.cots.foodoffer.R;
 public class UserInfomationFragment extends Fragment {
     //bất sự kiện giống signin
 
-    public static UserInfomationFragment newInstance() {
-        return new UserInfomationFragment();
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -192,4 +188,8 @@ public class UserInfomationFragment extends Fragment {
 
         }
     };
+
+    public static UserInfomationFragment newInstance() {
+        return new UserInfomationFragment();
+    }
 }

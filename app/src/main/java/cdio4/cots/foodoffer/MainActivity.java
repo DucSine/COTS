@@ -77,8 +77,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.nav_userInfomation:
                 intent = new Intent(MainActivity.this, MainAccountActivity.class);
-                intent.putExtra(getResources().getString(R.string.fragmentID),2);
-                Toast.makeText(getApplicationContext(), "2", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_discountCode:
                // intent = new Intent(MainActivity.this, DiscountCodeActivity.class);
@@ -91,8 +89,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_userChangePass:
                 intent =new Intent(MainActivity.this, MainAccountActivity.class);
-                intent.putExtra(getResources().getString(R.string.fragmentID),3);
-                Toast.makeText(getApplicationContext(), "3", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_aboutUs:
                 intent = new Intent(MainActivity.this, AboutUsActivity.class);
@@ -104,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
         item.setChecked(true);
         mDrawerLayout.closeDrawers();
-      //  Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
         return true;
     }
 

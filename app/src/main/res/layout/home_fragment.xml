@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="16dp"
-    android:background="@color/black"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.HomeFragment.HomeFragment">
 
-    <TextView
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_home_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="20pt"
-        android:textColor="@color/black"
-        android:text="Hello" />
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        android:layout_above="@+id/bot_nav_home_fragment"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bot_nav_home_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/teal_700"
+        app:itemIconTint="@color/custom_color_home"
+        app:itemTextColor="@color/custom_color_home"
+        app:menu="@menu/menu_home"/>
 
-</FrameLayout>
+</RelativeLayout>
