@@ -9,6 +9,11 @@
     <string name="lable_CartActivity">Giỏ Hàng</string>
     <string name="lable_HistoryTransactionActivity">Lịch Sử Đặt Hàng</string>
     <string name="lable_AboutUs">Thông Tin Phiên Bản</string>
+    <string name="create_account">Tạo tài khoản</string>
+    <string name="lable_sign_up_Activity">Đăng ký</string>
+
+    <!--Activity button-->
+    <string name="button_next">Tiếp tục</string>
 
     <!--toolbar menu-->
     <string name="toolbar_search">Search</string>

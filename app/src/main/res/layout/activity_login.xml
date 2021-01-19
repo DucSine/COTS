@@ -85,7 +85,7 @@
         android:paddingRight="16dp"
         android:orientation="horizontal">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_activity_login_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
             android:textColor="@color/white"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_activity_login_cancle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -108,7 +108,8 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_activity_login_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
