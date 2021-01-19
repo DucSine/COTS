@@ -21,16 +21,6 @@ import com.google.android.material.navigation.NavigationView;
 import cdio4.cots.foodoffer.ui.HomeFragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private DrawerLayout mDrawerLayout;
-    private Toolbar toolbar;
-    private ActionBar actionBar;
-    private NavigationView navigationView;
-    private Intent intent;
-
-    private static final int Home_Fragment = 1;
-    private static final int Aboutus_Fragment = 2;
-    private int curentFragment = Home_Fragment;
-    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 AppBAr_Search();
                 return true;
             case R.id.toolbar_avatar:
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                //new LoginDialog(this).show();
+                intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -77,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.nav_userInfomation:
                 intent = new Intent(MainActivity.this, MainAccountActivity.class);
+                intent.putExtra(getResources().getString(R.string.fragmentID),USERINFORMATION_FRAGMENT);
                 break;
             case R.id.nav_discountCode:
                // intent = new Intent(MainActivity.this, DiscountCodeActivity.class);
@@ -89,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_userChangePass:
                 intent =new Intent(MainActivity.this, MainAccountActivity.class);
+                intent.putExtra(getResources().getString(R.string.fragmentID),CHANGEPASSWORD_FRAGMENT);
                 break;
             case R.id.nav_aboutUs:
                 intent = new Intent(MainActivity.this, AboutUsActivity.class);
@@ -128,5 +120,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.content_layout, fragment);
         transaction.commit();
     }
+
+    private DrawerLayout mDrawerLayout;
+    private Toolbar toolbar;
+    private ActionBar actionBar;
+    private NavigationView navigationView;
+    private Intent intent;
+
+    private static final int  USERINFORMATION_FRAGMENT = 1;
+    private static final int SIGNIN_FRAGMENT = 2;
+    private static final int CHANGEPASSWORD_FRAGMENT = 3;
 
 }
