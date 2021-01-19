@@ -23,7 +23,7 @@ public class MainAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_account);
         intent = getIntent();
-        int Fr = intent.getIntExtra(getResources().getString(R.string.fragmentID), USERINFORMATION_FRAGMENT);
+        int Fr = intent.getIntExtra(getResources().getString(R.string.fragmentID), getResources().getInteger(R.integer.USERINFORMATION_FRAGMENT));
         switch (Fr){
             case USERINFORMATION_FRAGMENT:
                 replaceFragment(new UserInfomationFragment());

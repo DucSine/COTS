@@ -1,17 +1,18 @@
 package cdio4.cots.foodoffer.ui.account.SiginFragment;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -19,6 +20,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import cdio4.cots.foodoffer.R;
 import cdio4.cots.foodoffer.regx.RegularExpression;
+import cdio4.cots.foodoffer.ui.account.UserInfomationFragment.UserInfomationFragment;
 
 public class SigninFragment extends Fragment {
 
@@ -28,9 +30,18 @@ public class SigninFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.signin_fragment, container, false);
         InitFragment();
+
         edt_userName.addTextChangedListener(edt_userName_Event);
         edt_password.addTextChangedListener(edt_password_Event);
         edt_passwordConfirm.addTextChangedListener(edt_passswordConfirm_Event);
+
+        btn_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //gửi dẽ liệu về activity
+                replaceFragment(new UserInfomationFragment());
+            }
+        });
         return root;
     }
 
@@ -49,13 +60,20 @@ public class SigninFragment extends Fragment {
         edt_userName = root.findViewById(R.id.ip_edt_activity_signin_username);
         edt_password = root.findViewById(R.id.ip_edt_activity_signin_password);
         edt_passwordConfirm = root.findViewById(R.id.ip_edt_activity_signin_password_confirm);
+
+        btn_next = root.findViewById(R.id.btn_next);
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.sign_fragment, fragment);
+        transaction.commit();
     }
 
     private SigninViewModel signinViewModel;
     private View root;
     private Context context;
     private RegularExpression regularExpression = new RegularExpression();
-    private SharedPreferences sharedPreferences;
 
     private TextInputLayout edt_userNameLayout;
     private TextInputLayout edt_passwordLayout;
@@ -63,10 +81,12 @@ public class SigninFragment extends Fragment {
     private TextInputEditText edt_userName;
     private TextInputEditText edt_password;
     private TextInputEditText edt_passwordConfirm;
+    private Button btn_next;
 
-    private String userName = "";
-    private String password = "";
-    private String passwordConfirm = "";
+    private String userName;
+    private String password;
+    private String passwordConfirm;
+
 
     private TextWatcher edt_userName_Event = new TextWatcher() {
         @Override
@@ -116,18 +136,6 @@ public class SigninFragment extends Fragment {
             passwordConfirm = edt_passwordConfirm.getText().toString();
         }
     };
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
 
     public static SigninFragment newInstance() {
         return new SigninFragment();

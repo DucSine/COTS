@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.nav_userInfomation:
                 intent = new Intent(MainActivity.this, MainAccountActivity.class);
-                intent.putExtra(getResources().getString(R.string.fragmentID),USERINFORMATION_FRAGMENT);
+                intent.putExtra(getResources().getString(R.string.fragmentID),getResources().getInteger(R.integer.USERINFORMATION_FRAGMENT));
                 break;
             case R.id.nav_discountCode:
                // intent = new Intent(MainActivity.this, DiscountCodeActivity.class);
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_userChangePass:
                 intent =new Intent(MainActivity.this, MainAccountActivity.class);
-                intent.putExtra(getResources().getString(R.string.fragmentID),CHANGEPASSWORD_FRAGMENT);
+                intent.putExtra(getResources().getString(R.string.fragmentID),getResources().getInteger(R.integer.CHANGEPASSWORD_FRAGMENT));
                 break;
             case R.id.nav_aboutUs:
                 intent = new Intent(MainActivity.this, AboutUsActivity.class);

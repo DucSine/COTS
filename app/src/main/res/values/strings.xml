@@ -74,4 +74,9 @@
 
     <!--intent-->
     <string name="fragmentID">fragmentID</string>
+
+    <!--CONST Fragment-->
+    <integer name="USERINFORMATION_FRAGMENT">1</integer>
+    <integer name="SIGNIN_FRAGMENT">2</integer>
+    <integer name="CHANGEPASSWORD_FRAGMENT">3</integer>
 </resources>
