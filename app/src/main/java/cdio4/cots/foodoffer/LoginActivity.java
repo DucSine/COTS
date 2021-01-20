@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cdio4.cots.foodoffer.database.RequestAPI;
-import cdio4.cots.foodoffer.regx.RegularExpression;
+import cdio4.cots.foodoffer.tools.RegularExpression;
 
 public class LoginActivity extends AppCompatActivity {
 

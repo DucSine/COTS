@@ -1,4 +1,4 @@
-package cdio4.cots.foodoffer.regx;
+package cdio4.cots.foodoffer.tools;
 
 import com.google.android.material.textfield.TextInputLayout;
 

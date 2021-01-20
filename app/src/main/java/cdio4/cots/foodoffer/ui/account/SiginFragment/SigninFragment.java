@@ -19,7 +19,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import cdio4.cots.foodoffer.R;
-import cdio4.cots.foodoffer.regx.RegularExpression;
+import cdio4.cots.foodoffer.tools.RegularExpression;
 import cdio4.cots.foodoffer.ui.account.UserInfomationFragment.UserInfomationFragment;
 
 public class SigninFragment extends Fragment {

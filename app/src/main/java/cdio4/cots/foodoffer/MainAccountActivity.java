@@ -55,6 +55,7 @@ public class MainAccountActivity extends AppCompatActivity {
         transaction.replace(R.id.content_account_layout, fragment);
         transaction.commit();
     }
+
     private Intent intent;
     private static final int  USERINFORMATION_FRAGMENT = 1;
     private static final int SIGNIN_FRAGMENT = 2;
