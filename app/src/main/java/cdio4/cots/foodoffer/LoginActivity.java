@@ -46,9 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(LoginActivity.this, MainAccountActivity.class);
-                intent.putExtra(getResources().getString(R.string.fragmentID),2);
-                startActivity(intent);
+                startActivity(new Intent(LoginActivity.this, SignInActivity.class));
             }
         });
     }
@@ -94,8 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferencesSaveData(getResources().getString(R.string.shared_preferences_login));
 
                 if(status) {
-                    intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     //check and reload avatar
                 }
             }
@@ -117,7 +114,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
     private RegularExpression regx = new RegularExpression();
-    private Intent intent;
 
     private TextInputLayout edt_usernameLayout;
     private TextInputLayout edt_passwordLayout;

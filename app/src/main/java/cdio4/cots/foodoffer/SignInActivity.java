@@ -1,5 +1,6 @@
 package cdio4.cots.foodoffer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -39,7 +40,14 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.toolbar_next){
-//
+            intent = new Intent(SignInActivity.this,MainAccountActivity.class);
+
+            intent.putExtra(getResources().getString(R.string.fragmentID),getResources().getInteger(R.integer.USERINFORMATION_FRAGMENT));
+            intent.putExtra(getResources().getString(R.string.signIn_status), true);
+            intent.putExtra(getResources().getString(R.string.signIn_userName), userName);
+            intent.putExtra(getResources().getString(R.string.signIn_password), password);
+
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -55,6 +63,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private RegularExpression regularExpression = new RegularExpression();
+    private Intent intent;
 
     private TextInputLayout edt_userNameLayout;
     private TextInputLayout edt_passwordLayout;
@@ -112,7 +121,10 @@ public class SignInActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            passwordConfirm = edt_passwordConfirm.getText().toString();
+            if (edt_passwordConfirm.getText().toString().equals(password))
+                passwordConfirm = edt_passwordConfirm.getText().toString();
+            else
+                edt_passwordConfirmLayout.setError("Không khớp");
         }
     };
 
