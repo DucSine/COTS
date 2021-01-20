@@ -19,11 +19,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import cdio4.cots.foodoffer.R;
+import cdio4.cots.foodoffer.ViewModel.AccountViewModel;
 import cdio4.cots.foodoffer.tools.RegularExpression;
-import cdio4.cots.foodoffer.ui.account.UserInfomationFragment.UserInfomationFragment;
 
 public class SigninFragment extends Fragment {
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -35,15 +34,22 @@ public class SigninFragment extends Fragment {
         edt_password.addTextChangedListener(edt_password_Event);
         edt_passwordConfirm.addTextChangedListener(edt_passswordConfirm_Event);
 
+       // btn_next.setEnabled(false);
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //gửi dẽ liệu về activity
-                replaceFragment(new UserInfomationFragment());
+                accountViewModel.setSignIn_userName(userName);
+               // accountViewModel.setSignIn_password(password);
+                
+                //removeFragment(newInstance());
+               //remove k hoạt động
+
             }
         });
         return root;
     }
+
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -56,21 +62,22 @@ public class SigninFragment extends Fragment {
         edt_userNameLayout = root.findViewById(R.id.ip_layout_activity_singin_username);
         edt_passwordLayout = root.findViewById(R.id.ip_layout_activity_signin_password);
         edt_passwordConfirmLayout = root.findViewById(R.id.ip_layout_activity_signin_password_confirm);
-
         edt_userName = root.findViewById(R.id.ip_edt_activity_signin_username);
         edt_password = root.findViewById(R.id.ip_edt_activity_signin_password);
         edt_passwordConfirm = root.findViewById(R.id.ip_edt_activity_signin_password_confirm);
-
         btn_next = root.findViewById(R.id.btn_next);
+
+       // accountViewModel = ViewModelProviders.of(getActivity()).get(AccountViewModel.class);
     }
 
-    private void replaceFragment(Fragment fragment) {
+    private void removeFragment(Fragment fragment) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.sign_fragment, fragment);
+        transaction.remove(fragment);
         transaction.commit();
     }
 
     private SigninViewModel signinViewModel;
+    private AccountViewModel accountViewModel;
     private View root;
     private Context context;
     private RegularExpression regularExpression = new RegularExpression();
