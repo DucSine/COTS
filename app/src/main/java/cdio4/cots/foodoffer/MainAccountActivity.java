@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import cdio4.cots.foodoffer.ViewModel.AccountViewModel;
 import cdio4.cots.foodoffer.ui.account.ChangePasswordFragment.ChangePasswordFragment;
-import cdio4.cots.foodoffer.ui.account.SiginFragment.SigninFragment;
 import cdio4.cots.foodoffer.ui.account.UserInfomationFragment.UserInfomationFragment;
 
 public class MainAccountActivity extends AppCompatActivity {
@@ -45,9 +44,6 @@ public class MainAccountActivity extends AppCompatActivity {
         switch (Fr){
             case USERINFORMATION_FRAGMENT:
                 replaceFragment(new UserInfomationFragment());
-                break;
-            case SIGNIN_FRAGMENT:
-                replaceFragment(new SigninFragment());
                 break;
             case CHANGEPASSWORD_FRAGMENT:
                 replaceFragment(new ChangePasswordFragment());
@@ -89,11 +85,9 @@ public class MainAccountActivity extends AppCompatActivity {
 
     private Intent intent;
     private static final int  USERINFORMATION_FRAGMENT = 1;
-    private static final int SIGNIN_FRAGMENT = 2;
     private static final int CHANGEPASSWORD_FRAGMENT = 3;
     private AccountViewModel accountViewModel;
 
     private Fragment us_infomation_fragment;
-    private Fragment signIn_fragment;
     private Fragment changePassword_fragment;
 }
