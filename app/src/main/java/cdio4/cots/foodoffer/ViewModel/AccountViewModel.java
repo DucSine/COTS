@@ -7,36 +7,70 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 public class AccountViewModel extends AndroidViewModel {
+    private MutableLiveData<String > fullname = new MutableLiveData<>();
+    private MutableLiveData<Boolean> gender = new MutableLiveData<>();
+    private MutableLiveData<String> bDate = new MutableLiveData<>();
+    private MutableLiveData<String> usID = new MutableLiveData<>();
+    private MutableLiveData<String> phone = new MutableLiveData<>();
+    private MutableLiveData<String> email = new MutableLiveData<>();
+    private MutableLiveData<String> adress = new MutableLiveData<>();
 
-    private MutableLiveData<String> signIn_userName = new MutableLiveData<>();
-    private MutableLiveData<String> signIn_password = new MutableLiveData<>();
-
-    public MutableLiveData<String> getSignIn_userName() {
-        return signIn_userName;
+    public MutableLiveData<String> getFullname() {
+        return fullname;
     }
 
-    public void setSignIn_userName(String userName) {
-        this.signIn_userName.setValue(userName);
+    public void setFullname(String fullname) {
+        this.fullname.setValue(fullname);
     }
 
-    public MutableLiveData<String> getSignIn_password() {
-        return signIn_password;
+    public MutableLiveData<Boolean> getGender() {
+        return gender;
     }
 
-    public void setSignIn_password(String password) {
-        this.signIn_password.setValue(password);
+    public void setGender(Boolean gender) {
+        this.gender.setValue(gender);
     }
 
-    /* private MutableLiveData<Integer> statusFragmentAccount = new MutableLiveData<>();
+    public MutableLiveData<String> getbDate() {
+        return bDate;
+    }
 
-        public void setStatus(Integer status){
-            statusFragmentAccount.setValue(status);
-        }
+    public void setbDate(String bDate) {
+        this.bDate.setValue(bDate);
+    }
 
-        public LiveData<Integer> getStatus() {
-            return statusFragmentAccount;
-        }
-    */
+    public MutableLiveData<String> getUsID() {
+        return usID;
+    }
+
+    public void setUsID(String usID) {
+        this.usID.setValue(usID);
+    }
+
+    public MutableLiveData<String> getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone.setValue(phone);
+    }
+
+    public MutableLiveData<String> getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email.setValue(email);
+    }
+
+    public MutableLiveData<String> getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress.setValue(adress);
+    }
+
     public AccountViewModel(@NonNull Application application) {
         super(application);
     }

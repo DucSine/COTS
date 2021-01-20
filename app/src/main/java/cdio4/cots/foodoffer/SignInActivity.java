@@ -29,6 +29,7 @@ public class SignInActivity extends AppCompatActivity {
         edt_passwordConfirm.addTextChangedListener(edt_passswordConfirm_Event);
 
 
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,7 +40,7 @@ public class SignInActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.toolbar_next){
+        if (item.getItemId() == R.id.toolbar_next) {
             intent = new Intent(SignInActivity.this,MainAccountActivity.class);
 
             intent.putExtra(getResources().getString(R.string.fragmentID),getResources().getInteger(R.integer.USERINFORMATION_FRAGMENT));
