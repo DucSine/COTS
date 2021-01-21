@@ -15,6 +15,7 @@
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
         android:layout_above="@+id/bot_nav_home_fragment"/>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bot_nav_home_fragment"
         android:layout_width="match_parent"

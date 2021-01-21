@@ -45,19 +45,6 @@ public class AccountMethod {
         this.adress = adress;
     }
 
-    protected void SharedPreferencesSaveData(String fileName){
-        sharedPreferences= context.getSharedPreferences(context.getResources().getString(R.string.shared_preferences_login), Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", username);
-        editor.putString("password", password);
-        editor.putBoolean("logintatus",loginStatus);
-        editor.putString("token",token);
-        editor.putString("message",errorMessage);
-
-        editor.commit();
-    }
-
     public AsyncTask<String, Void, String> Login = new AsyncTask<String, Void, String>() {
         @Override
         protected String doInBackground(String... urlRequest) {
@@ -95,11 +82,39 @@ public class AccountMethod {
 
     public AsyncTask<String, Void,String> Signin = new AsyncTask<String, Void, String>() {
         @Override
-        protected String doInBackground(String... strings) {
-            return null;
+        protected String doInBackground(String... urlRequest) {
+            String message = "{" +
+                    "\"username\":" + "\"" + username + "\"," +
+                    "\"email\":" + "\"" + email + "\"" +
+                    "\"password\":" + "\"" + password + "\"" +
+                    "\"SDT\":" + "\"" + phone + "\"" +
+                    "\"diaChi\":" + "\"" + adress + "\"" +
+                    "\"fullName\":" + "\"" + fullName + "\"" +
+                    "\"gioiTinh\":" + "\"" + String.valueOf(gender) + "\"" +
+                    "\"ngaySinh\":" + "\"" + bDate + "\"" +
+                    "\"CMND\":" + "\"" + usID + "\"" +
+                    "}";
+            return new RequestAPI(message, null).GetRequest(urlRequest);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            //////
         }
     };
 
+    protected void SharedPreferencesSaveData(String fileName){
+        sharedPreferences= context.getSharedPreferences(context.getResources().getString(R.string.shared_preferences_login), Context.MODE_PRIVATE);
 
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", username);
+        editor.putString("password", password);
+        editor.putBoolean("logintatus",loginStatus);
+        editor.putString("token",token);
+        editor.putString("message",errorMessage);
+
+        editor.commit();
+    }
 
 }
