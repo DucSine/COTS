@@ -110,7 +110,7 @@ public class AccountMethod {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username", username);
         editor.putString("password", password);
-        editor.putBoolean("logintatus",loginStatus);
+        editor.putBoolean("loginstatus",loginStatus);
         editor.putString("token",token);
         editor.putString("message",errorMessage);
 

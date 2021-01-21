@@ -2,23 +2,18 @@ package cdio4.cots.foodoffer;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import cdio4.cots.foodoffer.database.RequestAPI;
+import cdio4.cots.foodoffer.model.AccountMethod;
 import cdio4.cots.foodoffer.tools.RegularExpression;
 
 public class LoginActivity extends AppCompatActivity {
@@ -35,11 +30,10 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String message = "{" +
-                        "\"username\":" + "\"" + username + "\"," +
-                        "\"password\":" + "\"" + password + "\"" +
-                        "}";
-                PostLogin(message);
+                new AccountMethod(getApplicationContext(), username, password).Login.execute(getResources().getString(R.string.url_Login));
+                Boolean status =  sharedPreferences.getBoolean("loginstatus",false);
+                if(status)
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
 
@@ -58,58 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         edt_password =  findViewById(R.id.ip_edt_activity_login_password);
         btn_login = findViewById(R.id.btn_activity_login_login);
         btn_signin = findViewById(R.id.btn_activity_login_sign_in);
-    }
 
-    private void PostLogin(String message){
-        new AsyncTask<String, Void, String>() {
-            @Override
-            protected String doInBackground(String... urlRequest) {
-                return new RequestAPI(message, null).PostRequest(urlRequest);
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                try {
-                    JSONObject loginObject = new JSONObject(s);
-                    if(loginObject.getString("status").equals("success")){
-                        status = true;
-                        token = loginObject.getJSONObject("data").getString("token");
-                        errorMessage = null;
-                    }
-                    else {
-                        status = false;
-                        token = "";
-                        errorMessage = loginObject.getJSONObject("error").getString("message");
-                    }
-
-                    Toast.makeText(getApplicationContext(),loginObject.getString("status"),Toast.LENGTH_SHORT).show();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                SharedPreferencesSaveData(getResources().getString(R.string.shared_preferences_login));
-
-                if(status) {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    //check and reload avatar
-                }
-            }
-        }.execute(getResources().getString(R.string.url_Login));
-    }
-
-    protected void SharedPreferencesSaveData(String fileName){
         sharedPreferences= getSharedPreferences(getResources().getString(R.string.shared_preferences_login), MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", username);
-        editor.putString("password", password);
-        editor.putBoolean("status",status);
-        editor.putString("token",token);
-        editor.putString("message",errorMessage);
-
-        editor.commit();
     }
 
     private SharedPreferences sharedPreferences;
