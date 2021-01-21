@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import cdio4.cots.foodoffer.model.AccountMethod;
+import cdio4.cots.foodoffer.tools.AccountMethod;
 import cdio4.cots.foodoffer.tools.RegularExpression;
 
 public class LoginActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package cdio4.cots.foodoffer.model;
+package cdio4.cots.foodoffer.tools;
 
 import android.content.Context;
 import android.content.SharedPreferences;
