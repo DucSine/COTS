@@ -28,8 +28,6 @@ public class SignInActivity extends AppCompatActivity {
         edt_password.addTextChangedListener(edt_password_Event);
         edt_passwordConfirm.addTextChangedListener(edt_passswordConfirm_Event);
 
-
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,7 +38,7 @@ public class SignInActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.toolbar_next) {
+        if (item.getItemId() == R.id.toolbar_next && statusFlag()) {
             intent = new Intent(SignInActivity.this,MainAccountActivity.class);
 
             intent.putExtra(getResources().getString(R.string.fragmentID),getResources().getInteger(R.integer.USERINFORMATION_FRAGMENT));
@@ -61,6 +59,14 @@ public class SignInActivity extends AppCompatActivity {
         edt_userName = findViewById(R.id.ip_edt_activity_signin_username);
         edt_password = findViewById(R.id.ip_edt_activity_signin_password);
         edt_passwordConfirm = findViewById(R.id.ip_edt_activity_signin_password_confirm);
+    }
+
+    private Boolean statusFlag(){
+        if(userName != null && userName != "" &&
+                password != null && password != "" && password.equals(password))
+            return true;
+        else
+            return false;
     }
 
     private RegularExpression regularExpression = new RegularExpression();

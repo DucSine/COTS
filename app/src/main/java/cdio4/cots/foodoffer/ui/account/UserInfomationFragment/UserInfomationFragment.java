@@ -30,16 +30,26 @@ public class UserInfomationFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         root =  inflater.inflate(R.layout.user_infomation_fragment, container, false);
         InitFragment();
+
         edt_fullName.addTextChangedListener(edt_fullName_Event);
         edt_bDate.addTextChangedListener(edt_bDate_Event);
         edt_userID.addTextChangedListener(edt_userID_Event);
         edt_phone.addTextChangedListener(edt_phone_Event);
         edt_email.addTextChangedListener(edt_email_Event);
         edt_adress.addTextChangedListener(edt_adress_Event);
+
         accountViewModel = ViewModelProviders.of(getActivity()).get(AccountViewModel.class);
-       // account = new Account("duc",true,
-            //    "23/10","12345","234455","ddfgte","dsres");
-       // accountViewModel.setmAccount(account);
+        rbtGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(rbt_male.isChecked())
+                    accountViewModel.setGender(true);
+                else
+                if (rbt_female.isChecked())
+                    accountViewModel.setGender(false);
+            }
+        });
+
 
         return root;
     }
@@ -71,17 +81,6 @@ public class UserInfomationFragment extends Fragment {
         rbtGroupGender = root.findViewById(R.id.rbt_group_us_info_gender);
         rbt_male = rbtGroupGender.findViewById(R.id.rbt_us_info_male);
         rbt_female = rbtGroupGender.findViewById(R.id.rbt_us_info_female);
-
-        rbtGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if(rbt_male.isChecked())
-                    accountViewModel.setGender(true);
-                else
-                    if (rbt_female.isChecked())
-                        accountViewModel.setGender(false);
-            }
-        });
     }
 
     private AccountViewModel accountViewModel;
