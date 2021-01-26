@@ -9,6 +9,9 @@
     <string name="lable_CartActivity">Giỏ Hàng</string>
     <string name="lable_HistoryTransactionActivity">Lịch Sử Đặt Hàng</string>
     <string name="lable_AboutUs">Thông Tin Phiên Bản</string>
+    <string name="lable_Price_Title">Giá</string>
+    <string name="lable_Desc_Title">Mô tả</string>
+    <string name="lable_Res_Title">Quán ăn</string>
 
     <!--toolbar menu-->
     <string name="toolbar_search">Search</string>
@@ -73,6 +76,9 @@
     <string name="url_GetAccount">https://doan5.herokuapp.com/api/user/auth/getMe</string>
     <string name="url_UpdateAccount">https://doan5.herokuapp.com/api/user/auth/update</string>
     <string name="url_ChangePassword">https://doan5.herokuapp.com/api/user/auth/updatePassword</string>
+    <string name="url_CheckUserExists">https://doan5.herokuapp.com/api/user/auth/verifyUsername?username=</string>
+    <string name="url_GetFood">https://doan5.herokuapp.com/food</string>
+
 
     <!--Fragment-->
     <integer name="USERINFORMATION_FRAGMENT">1</integer>

@@ -19,7 +19,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import cdio4.cots.foodoffer.R;
-import cdio4.cots.foodoffer.ViewModel.AccountViewModel;
 import cdio4.cots.foodoffer.model.Account;
 
 public class UserInfomationFragment extends Fragment {
@@ -31,15 +30,15 @@ public class UserInfomationFragment extends Fragment {
         root =  inflater.inflate(R.layout.user_infomation_fragment, container, false);
         InitFragment();
 
-        edt_fullName.addTextChangedListener(edt_fullName_Event);
+/*        edt_fullName.addTextChangedListener(edt_fullName_Event);
         edt_bDate.addTextChangedListener(edt_bDate_Event);
         edt_userID.addTextChangedListener(edt_userID_Event);
         edt_phone.addTextChangedListener(edt_phone_Event);
         edt_email.addTextChangedListener(edt_email_Event);
-        edt_adress.addTextChangedListener(edt_adress_Event);
+        edt_adress.addTextChangedListener(edt_adress_Event);*/
 
-        accountViewModel = ViewModelProviders.of(getActivity()).get(AccountViewModel.class);
-        rbtGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+       /* rbtGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if(rbt_male.isChecked())
@@ -48,7 +47,7 @@ public class UserInfomationFragment extends Fragment {
                 if (rbt_female.isChecked())
                     accountViewModel.setGender(false);
             }
-        });
+        });*/
 
 
         return root;
@@ -83,7 +82,7 @@ public class UserInfomationFragment extends Fragment {
         rbt_female = rbtGroupGender.findViewById(R.id.rbt_us_info_female);
     }
 
-    private AccountViewModel accountViewModel;
+
     private View root;
     private Account account;
 
@@ -104,7 +103,7 @@ public class UserInfomationFragment extends Fragment {
     private RadioButton rbt_male;
     private RadioButton rbt_female;
 
-    private TextWatcher edt_fullName_Event = new TextWatcher() {
+/*    private TextWatcher edt_fullName_Event = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -199,7 +198,7 @@ public class UserInfomationFragment extends Fragment {
         public void afterTextChanged(Editable editable) {
             accountViewModel.setAdress(edt_adress.getText().toString());
         }
-    };
+    };*/
 
     public static UserInfomationFragment newInstance() {
         return new UserInfomationFragment();

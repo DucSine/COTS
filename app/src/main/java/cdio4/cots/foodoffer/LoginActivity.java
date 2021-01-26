@@ -35,85 +35,84 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String message = "{" +
+                message = "{" +
                         "\"username\":" + "\"" + username + "\"," +
                         "\"password\":" + "\"" + password + "\"" +
                         "}";
-                PostLogin(message);
+                Login.execute(getResources().getString(R.string.url_Login));
+           
             }
         });
 
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, SignInActivity.class));
+             //   startActivity(new Intent(LoginActivity.this, SignInActivity.class));
             }
         });
     }
 
-    private void InitLayout(){
+    private void InitLayout() {
         edt_usernameLayout = findViewById(R.id.ip_layout_activity_login_username);
         edt_passwordLayout = findViewById(R.id.ip_layout_activity_login_password);
-        edt_username =  findViewById(R.id.ip_edt_activity_login_username);
-        edt_password =  findViewById(R.id.ip_edt_activity_login_password);
+        edt_username = findViewById(R.id.ip_edt_activity_login_username);
+        edt_password = findViewById(R.id.ip_edt_activity_login_password);
         btn_login = findViewById(R.id.btn_activity_login_login);
         btn_signin = findViewById(R.id.btn_activity_login_sign_in);
-    }
 
-    private void PostLogin(String message){
-        new AsyncTask<String, Void, String>() {
-            @Override
-            protected String doInBackground(String... urlRequest) {
-                return new RequestAPI(message, null).PostRequest(urlRequest);
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                try {
-                    JSONObject loginObject = new JSONObject(s);
-                    if(loginObject.getString("status").equals("success")){
-                        status = true;
-                        token = loginObject.getJSONObject("data").getString("token");
-                        errorMessage = null;
-                    }
-                    else {
-                        status = false;
-                        token = "";
-                        errorMessage = loginObject.getJSONObject("error").getString("message");
-                    }
-
-                    Toast.makeText(getApplicationContext(),loginObject.getString("status"),Toast.LENGTH_SHORT).show();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                SharedPreferencesSaveData(getResources().getString(R.string.shared_preferences_login));
-
-                if(status) {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    //check and reload avatar
-                }
-            }
-        }.execute(getResources().getString(R.string.url_Login));
-    }
-
-    protected void SharedPreferencesSaveData(String fileName){
-        sharedPreferences= getSharedPreferences(getResources().getString(R.string.shared_preferences_login), MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", username);
-        editor.putString("password", password);
-        editor.putBoolean("status",status);
-        editor.putString("token",token);
-        editor.putString("message",errorMessage);
-
-        editor.commit();
+        sharedPreferences = getSharedPreferences(getResources().getString(R.string.shared_preferences_login), MODE_PRIVATE);
     }
 
     private SharedPreferences sharedPreferences;
     private RegularExpression regx = new RegularExpression();
+
+    private AsyncTask<String, Void, String> Login = new AsyncTask<String, Void, String>() {
+        @Override
+        protected String doInBackground(String... urlRequest) {
+            return new RequestAPI(message, null).PostRequest(getResources().getString(R.string.url_Login));
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+                JSONObject loginObject = new JSONObject(s);
+                if (loginObject.getString("status").equals("success")) {
+                    loginStatus = true;
+                    token = loginObject.getJSONObject("data").getString("token");
+                    errorMessage = "";
+                } else {
+                    loginStatus=false;
+                }
+                /*else {
+                    loginStatus = false;
+                    token = "";
+                    errorMessage = loginObject.getJSONObject("error").getString("message");
+                }*/
+
+                if (loginStatus)
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                Toast.makeText(getApplicationContext(), loginObject.getString("status"), Toast.LENGTH_SHORT).show();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            SharedPreferencesSaveData();
+        }
+    };
+
+    protected void SharedPreferencesSaveData() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", username);
+        editor.putString("password", password);
+        //   editor.putBoolean("loginstatus",loginStatus);
+        editor.putString("token", token);
+        //   editor.putString("message",errorMessage);
+
+        editor.commit();
+    }
+
 
     private TextInputLayout edt_usernameLayout;
     private TextInputLayout edt_passwordLayout;
@@ -124,9 +123,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private String username;
     private String password;
-    private Boolean status;
+    private Boolean loginStatus = false;
     private String token;
     private String errorMessage;
+    private String message;
 
     private TextWatcher edt_userName_event = new TextWatcher() {
         @Override
@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            regx.checkNull(edt_usernameLayout,charSequence,"Vui lòng nhập tài khoản");
+            regx.checkNull(edt_usernameLayout, charSequence, "Vui lòng nhập tài khoản");
         }
 
         @Override
@@ -152,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            regx.checkNull(edt_passwordLayout,charSequence,"Vui lòng nhập mật khẩu");
+            regx.checkNull(edt_passwordLayout, charSequence, "Vui lòng nhập mật khẩu");
         }
 
         @Override
@@ -161,11 +161,3 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 }
-
-   /* protected void SharedPreferencesGetData(String fileName){
-        sharedPreferences.getBoolean("status",false); // false is default value
-    }
-    Lỗi: đóng app nếu k bật internet
-    Lỗi: đóng app nếu k translate đc json
-
-    */
